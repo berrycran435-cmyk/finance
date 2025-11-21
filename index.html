@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simpel Finance Manager</title>
+    <!-- Menghubungkan ke file CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- BAGIAN AUTHENTICATION (LOGIN/REGISTER) -->
+        <div id="auth-screen" class="screen active">
+            <h2>DompetKu</h2>
+            
+            <!-- Form Login -->
+            <div id="login-form">
+                <h3>Login</h3>
+                <input type="text" id="login-user" placeholder="Username">
+                <input type="password" id="login-pass" placeholder="Password">
+                <button id="btn-login">Masuk</button>
+                <p class="auth-toggle">
+                    Belum punya akun? <a href="#" id="link-to-register">Daftar di sini</a>
+                </p>
+            </div>
+
+            <!-- Form Register -->
+            <div id="register-form" class="hidden">
+                <h3>Buat Akun Baru</h3>
+                <input type="text" id="reg-user" placeholder="Username Baru">
+                <input type="password" id="reg-pass" placeholder="Password Baru">
+                <button id="btn-register" class="btn-sec">Daftar</button>
+                <p class="auth-toggle">
+                    Sudah punya akun? <a href="#" id="link-to-login">Login di sini</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- BAGIAN APLIKASI UTAMA (DASHBOARD) -->
+        <div id="app-screen" class="screen hidden">
+            <div class="header-nav">
+                <span id="welcome-user" style="font-weight:bold;">Hello, User</span>
+                <span id="btn-logout" class="logout-text">Keluar</span>
+            </div>
+
+            <!-- Kartu Saldo -->
+            <div class="balance-card">
+                <small>Saldo Saat Ini</small>
+                <h1 id="balance">Rp 0</h1>
+                <div class="stats">
+                    <div>
+                        <small>Pemasukan</small>
+                        <div id="money-plus" class="money-plus">+Rp 0</div>
+                    </div>
+                    <div>
+                        <small>Pengeluaran</small>
+                        <div id="money-minus" class="money-minus">-Rp 0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Input Transaksi -->
+            <h3>Transaksi</h3>
+            <form id="form">
+                <!-- Hidden Input untuk menyimpan ID saat mode Edit -->
+                <input type="hidden" id="edit-id"> 
+                
+                <div class="form-row">
+                    <input type="text" id="text" placeholder="Keterangan (mis: Gaji)" required>
+                    <select id="type" required>
+                        <option value="income">Masuk</option>
+                        <option value="expense">Keluar</option>
+                    </select>
+                </div>
+                <input type="number" id="amount" placeholder="Jumlah (Rp)" required>
+                
+                <div class="form-actions">
+                    <button type="submit" id="submit-btn">Tambah Transaksi</button>
+                    <button type="button" id="cancel-edit" class="btn-sec hidden">Batal Edit</button>
+                </div>
+            </form>
+
+            <!-- Daftar Riwayat -->
+            <h3>Riwayat</h3>
+            <ul id="list" class="list">
+                <!-- Item transaksi akan masuk ke sini lewat JS -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Menghubungkan ke file JS -->
+    <script src="script.js"></script>
+</body>
+</html>
